@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ShipListItem from '../ShipListItem/ShipListItem';
 import './ShipList.scss';
+import ShipAddForm from '../ShipAddForm/ShipAddForm';
 
 export default class ShipList extends Component {
     static propTypes = {
@@ -10,11 +11,15 @@ export default class ShipList extends Component {
 
     render() {
         return (
-            <div className="ship-list">
-                {this.props.items.map((item, key) => (
-                    <ShipListItem {...item} key={key} />
-                ))}
+            <div>
+                <ShipAddForm></ShipAddForm>
+                <div className="ship-list">
+                    {this.props.items.map((item, key) => (
+                        <ShipListItem {...item} key={key} />
+                    ))}
+                </div>
             </div>
+            
         );
     }
 }
