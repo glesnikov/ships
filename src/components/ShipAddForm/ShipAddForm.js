@@ -15,6 +15,6 @@ export default class ShipAddForm extends Component {
 
     handleSubmit = (evt) => {
         evt.preventDefault();
-        console.log(this.refs.name.value);
+        this.props.onAdd(this.refs.name.value);
     }
 }
