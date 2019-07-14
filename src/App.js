@@ -1,50 +1,23 @@
 import React, { Component } from 'react';
-import './App.scss';
-import ShipList from './components/ShipList/ShipList';
-import { ThemeContext } from './ThemeContext';
-import ShipAddForm from './components/ShipAddForm/ShipAddForm';
+
+import { Provider } from 'react-redux';
+import ShipPage from './components/ShipPage/ShipPage';
+import { createStore } from 'redux';
+import shipReducer from './store/ship/shipReducer';
 
 class App extends Component {
-    state = {
-        items: [
-            {
-                name: 'CE-23V'
-            },
-            {
-                name: 'FF2'
-            },
-            {
-                name: 'XEN-Z1'
-            },
-            {
-                name: 'APPOLO-5'
-            },
-            {
-                name: 'ANDROMEDA-CC2'
-            }
-        ]
-    };
-
     render() {
         return (
-            <div className="app">
-                <ThemeContext.Provider value="light">
-                    <ShipAddForm onAdd={this.handleAddShip}></ShipAddForm>
-                    <ShipList items={this.state.items} />
-                </ThemeContext.Provider>
-            </div>
+            <Provider store={store}>
+                <ShipPage />
+            </Provider>
         );
     }
-
-    handleAddShip = (name) => {
-        this.setState({
-            ...this.state,
-            items: [
-                ...this.state.items,
-                { name }
-            ]
-        });
-    }
 }
+
+const store = createStore(
+    shipReducer,
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 
 export default App;

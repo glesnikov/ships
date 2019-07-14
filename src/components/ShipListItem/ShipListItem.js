@@ -1,6 +1,8 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import './ShipListItem.scss';
+
+import React, { Component } from 'react';
+
+import PropTypes from 'prop-types';
 
 export default class ShipListItem extends Component {
     static propTypes = {
